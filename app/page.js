@@ -82,6 +82,8 @@ export default function Home() {
               Medication Reminders
             </MenuItem>
             <MenuItem onClick={() => handleMenuOptionClick("/tasks")}>Tasks</MenuItem>
+            <MenuItem onClick={() => handleMenuOptionClick("/contacts")}>Emergency Contacts</MenuItem>
+            <MenuItem onClick={() => handleMenuOptionClick("/appointments")}>Appointments</MenuItem>
             <MenuItem onClick={() => handleMenuOptionClick("/caregiver-tasks")}>
               Caregiver Tasks
             </MenuItem>
