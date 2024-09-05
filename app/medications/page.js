@@ -1,10 +1,11 @@
-"use client"
+"use client";
 
 import React, { useEffect, useState } from 'react';
 import { Box, Card, CardContent, Typography, Button, TextField, IconButton, List, ListItem, ListItemText, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useRouter } from 'next/navigation';
 
 // Placeholder functions for API calls
 const fetchMedications = async () => {
@@ -36,6 +37,7 @@ export default function MedicationsPage() {
   const [open, setOpen] = useState(false);
   const [currentMedication, setCurrentMedication] = useState(null);
   const [newMedication, setNewMedication] = useState({ name: '', dosage: '', frequency: '' });
+  const router = useRouter();
 
   useEffect(() => {
     const loadData = async () => {
@@ -82,14 +84,18 @@ export default function MedicationsPage() {
       <Typography variant="h4" gutterBottom>
         Medication Reminders
       </Typography>
-      
+
       <Card>
         <CardContent>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
             <Typography variant="h6">Medications</Typography>
-            <IconButton color="primary" onClick={() => handleOpen()}>
-              <AddIcon />
-            </IconButton>
+            <Box>
+              <IconButton color="primary" onClick={() => handleOpen()}>
+                <AddIcon />
+              </IconButton>
+              <Button  variant="outlined"  sx={{ marginBottom: 2 }}  onClick={() => router.push('/dashboard')}>Dashboard</Button>
+              <Button  variant="outlined"  sx={{ marginBottom: 2 }}  onClick={() => router.push('/')}>Homepage</Button>
+            </Box>
           </Box>
           <List>
             {medications.map((medication) => (
